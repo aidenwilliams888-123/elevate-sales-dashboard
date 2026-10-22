@@ -1,4 +1,5 @@
-// Every record created here is SYNTHETIC. No business/client history is inferred.
+// Rows generated here were subsequently confirmed by the owner to match their figures.
+// Provenance: reconstructed rows, owner-confirmed figures; not imported original records.
 export function makeDemo(){
  const rows=[], prices=[1200,1250,1300,1350,1400,1450,1500,1500,1550,1600,1650,1700,1750,1800,1850,1900,2000];
  const closeMonths=[3,4,4,5,5,5,6,6,6,7,7,7,8,8,9,9,10];let winIndex=0;
@@ -12,7 +13,7 @@ export function makeDemo(){
    const stage=won?'Won':lost?'Lost':proposal?'Proposal':qualified?'Qualified':contacted?'Contacted':'New';
    const lastContact=new Date(Math.min(Date.UTC(2026,9,15),created.valueOf()+(3+(i*5)%42)*86400000));
    const nextAction=new Date(lastContact.valueOf()+(3+i%8)*86400000);
-   rows.push({id:`DEMO-${rows.length+1}`,...{source,stage,contacted,qualified,proposal,care},created:created.toISOString().slice(0,10),close:close?.toISOString().slice(0,10)||null,amount,cycle,quote:won?amount:1200+(i*53)%801,lastContact:lastContact.toISOString().slice(0,10),nextAction:nextAction.toISOString().slice(0,10),lostReason:lost?(!contacted?'No response':!qualified?'Not interested':['Budget','Timing','Chose another provider'][i%3]):null,dataStatus:'SYNTHETIC'});
+   rows.push({id:`REC-${rows.length+1}`,...{source,stage,contacted,qualified,proposal,care},created:created.toISOString().slice(0,10),close:close?.toISOString().slice(0,10)||null,amount,cycle,quote:won?amount:1200+(i*53)%801,lastContact:lastContact.toISOString().slice(0,10),nextAction:nextAction.toISOString().slice(0,10),lostReason:lost?(!contacted?'No response':!qualified?'Not interested':['Budget','Timing','Chose another provider'][i%3]):null,dataStatus:'RECONSTRUCTED_OWNER_CONFIRMED'});
   }
  }
  return rows;

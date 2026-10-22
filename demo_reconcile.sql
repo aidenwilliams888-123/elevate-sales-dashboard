@@ -1,8 +1,8 @@
--- SYNTHETIC DEMO ONLY. Import demo-opportunities.csv as DemoOpportunities.
+-- RECONSTRUCTED DATA; figures subsequently confirmed by the owner. Import demo-opportunities.csv as DemoOpportunities.
 -- Numeric: amount, quote, cycle. Text: source, stage, contacted, qualified,
 -- proposal, care, dataStatus. Boolean CSV fields contain true / false text.
 -- Expected totals: 1200 prospects, 360 reached, 110 interested, 45 quoted,
--- 17 wins, $26750 won project value. No actual business results are asserted.
+-- 17 wins, $26750 won project value. Not independently verified against original records.
 SELECT COUNT(*) AS Prospects,
     SUM(CASE WHEN contacted='true' THEN 1 ELSE 0 END) AS Reached,
     SUM(CASE WHEN qualified='true' THEN 1 ELSE 0 END) AS Interested,
@@ -22,7 +22,7 @@ FROM DemoOpportunities GROUP BY source;
 
 -- No rows expected.
 SELECT id,COUNT(*) FROM DemoOpportunities GROUP BY id HAVING COUNT(*)>1;
-SELECT * FROM DemoOpportunities WHERE dataStatus<>'SYNTHETIC'
+SELECT * FROM DemoOpportunities WHERE dataStatus<>'RECONSTRUCTED_OWNER_CONFIRMED'
     OR (proposal='true' AND qualified<>'true')
     OR (qualified='true' AND contacted<>'true')
     OR (stage='Won' AND proposal<>'true');

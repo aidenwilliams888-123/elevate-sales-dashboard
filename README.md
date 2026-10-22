@@ -4,22 +4,24 @@
 
 A browser dashboard for Elevate Web Design, with an owner-reported business snapshot, care-plan calculations, and a local project ledger. It works without Power BI Desktop. **This is not a native Power BI report or a `.pbix` file.**
 
-## Deep analytics demo
+## Deep sales analytics
 
-[Open deep analytics](https://aidenwilliams888-123.github.io/elevate-sales-dashboard/analytics.html)
+[Open sales analytics](https://aidenwilliams888-123.github.io/elevate-sales-dashboard/analytics.html)
 
-This separate mode contains **1,200 entirely synthetic prospects**, 17 invented wins and $26,750 in illustrative won project value. It never changes the owner-reported snapshot or local project ledger. The funnel, dates, prices, quote values, care flags, loss reasons and follow-up dates are invented. They do not establish actual Elevate results.
+**Provenance update, October 22, 2026:** the owner subsequently stated that all displayed figures match their actual numbers. The dashboard therefore labels the figures **owner-confirmed**, not independently verified. The detailed opportunity rows were originally generated here and remain **reconstructed records**, not an imported original client or CRM ledger. This confirmation does not change their source history. Verify exact client-level dates and follow-ups against original records before operational use.
 
-- Performance: 8 KPIs, close-month won value, creation-cohort conversion, pricing and sales-cycle distributions, monthly cohort scorecard.
-- Funnel and channels: ever-reached milestones, progression and non-progression rates, cold-call/referral comparisons, loss reasons and a +5 percentage point close-rate scenario.
-- Pipeline: current stage counts, open qualified value, illustrative probability weights, paginated overdue follow-ups, searchable/paginated prospect records.
-- Planning: outreach, conversion, pricing, costs, delivery capacity, care uptake and time assumptions. Includes capacity caps, contribution per modeled hour and conversion/price sensitivity. Inputs are hypothetical and independent from filters. No churn, taxes, care delivery costs or owner pay are modeled.
+The reconstruction includes 1,200 prospects, 360 reached, 110 interested, 45 quoted, 17 wins and $26,750 in won project value. These figures are now owner-confirmed. The separate business snapshot retains the originally reported $26,000+ collections lower bound, since contracted project value and cash collections are different measures.
 
-Global filters select **lead creation cohorts**. All outcomes are observed through October 22, 2026. Won-value charts group close dates for the selected cohorts; they are not cash-collection charts. Funnel milestone counts are nested, while current stage counts are mutually exclusive. Non-progression does not mean rejection. Channel ROI is not inferred without actual channel cost data.
+- Performance: 8 KPIs, close-month won value, creation-cohort conversion, pricing and sales-cycle distributions, monthly scorecard.
+- Funnel and channels: milestone progression, cold-call/referral comparisons, loss reasons and a clearly hypothetical close-rate improvement scenario.
+- Pipeline: current stage counts, qualified opportunity value, assumed probability weights, follow-up queue and searchable records.
+- Planning: hypothetical outreach, conversion, pricing, costs, capacity, care uptake and time assumptions. Planning outputs remain scenarios, not historical results or predictions.
 
-The browser creates its deterministic records in `demo-domain.mjs`. `demo-opportunities.csv` contains the same records; the export button downloads the currently selected subset. `tests-demo.mjs` reconciles the funnel and scenario calculations. These demo records must never be imported into the actual business ledger as real projects.
+Filters select lead creation cohorts, with outcomes observed through October 22, 2026. Won-value charts group close dates for selected cohorts and are not cash-collection charts. Milestone counts are nested; current stage counts are mutually exclusive. Non-progression does not necessarily mean rejection.
 
-Run `node tests-demo.mjs` to check demo analytics.
+For compatibility, source filenames retain their original `demo-` names. `demo-domain.mjs` generates reconstructed rows, `demo-opportunities.csv` contains them, and `tests-demo.mjs` verifies calculations. Their `dataStatus` is `RECONSTRUCTED_OWNER_CONFIRMED`. These rows should remain separate from the original-record project ledger.
+
+Run `node tests-demo.mjs` for analytics checks.
 
 ## Business context
 
