@@ -7,7 +7,7 @@ let data,published,editing=null,currentPage='overview',resolveConfirm=null,local
 const titles={overview:['Sales overview','A clear view of the business you’re building.'],projects:['Project ledger','Reconstruct your history. Let the records tell the story.'],care:['Care revenue','A small recurring base. A clearer view of what it earns.'],method:['Data & definitions','Know where every number comes from.']};
 function toast(message){$('toast').textContent=message;$('toast').hidden=false;clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').hidden=true,5500);}
 function save(){validate(data);local=true;try{localStorage.setItem(KEY,JSON.stringify(data));}catch{$('storage-warning').textContent='Browser storage is unavailable or full. Changes work for this session only. Export a backup now.';$('storage-warning').hidden=false;}render();}
-function show(page){currentPage=page;document.querySelectorAll('.page').forEach(el=>el.hidden=el.id!==page);document.querySelectorAll('.nav').forEach(el=>{el.classList.toggle('active',el.dataset.page===page);if(el.dataset.page===page)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');});$('page-title').textContent=titles[page][0];$('page-subtitle').textContent=titles[page][1];history.replaceState(null,'','#'+page);}
+function show(page){currentPage=page;document.querySelectorAll('.page').forEach(el=>el.hidden=el.id!==page);document.querySelectorAll('.nav[data-page]').forEach(el=>{el.classList.toggle('active',el.dataset.page===page);if(el.dataset.page===page)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');});$('page-title').textContent=titles[page][0];$('page-subtitle').textContent=titles[page][1];history.replaceState(null,'','#'+page);}
 function fill(id,value){$(id).textContent=value;}
 function render(){
  const r=data.reported,c=careMetrics(r); $('local-banner').hidden=!local;
@@ -42,7 +42,7 @@ function openProject(project){editing=project?.id||null;const form=$('project-fo
 function download(name,body,type){const url=URL.createObjectURL(new Blob([body],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function confirmAction(title,description){fill('confirm-title',title);fill('confirm-description',description);$('confirm-dialog').showModal();return new Promise(resolve=>resolveConfirm=resolve);}
 function resolve(value){$('confirm-dialog').close();resolveConfirm?.(value);resolveConfirm=null;}
-document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>show(b.dataset.page)));
+document.querySelectorAll('.nav[data-page]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.page)));
 document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.goto)));
 document.querySelectorAll('[data-add]').forEach(b=>b.addEventListener('click',()=>openProject()));$('add-project').addEventListener('click',()=>openProject());
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).close()));
