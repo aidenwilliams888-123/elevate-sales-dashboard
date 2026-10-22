@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "businessName": "Elevate Web Design",
+  "asOf": "2026-10-22",
+  "reported": {
+    "completedProjects": 17,
+    "collectedRevenueLowerBound": 26000,
+    "projectPriceMin": 1200,
+    "projectPriceMax": 2000,
+    "coldCalledCompaniesLowerBound": 1000,
+    "coldCallShareEstimate": 0.8,
+    "careMonthlyPrice": 50,
+    "careCohorts": [{"customers":2,"reportedMonths":5},{"customers":2,"reportedMonths":4},{"customers":1,"reportedMonths":3}]
+  },
+  "projects": []
+}
