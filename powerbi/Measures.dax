@@ -1,0 +1,37 @@
+// Create measures separately. Table names: Projects, Reported, CareCohorts.
+// Use the CSV headers exactly. Do not paste the entire file as one expression.
+Entered Projects = COUNTROWS(Projects)
+
+Entered Website Collections USD = SUM(Projects[CollectedUSD])
+
+Average Entered Project USD = DIVIDE([Entered Website Collections USD], [Entered Projects])
+
+Reported Completed Projects = MAX(Reported[CompletedProjects])
+
+Reported Collections Lower Bound USD = MAX(Reported[CollectedRevenueLowerBoundUSD])
+
+Care Customers = SUM(CareCohorts[Customers])
+
+Care MRR USD = SUMX(CareCohorts, CareCohorts[Customers] * CareCohorts[MonthlyPriceUSD])
+
+Care Annualized Run Rate USD = [Care MRR USD] * 12
+
+Care Scheduled Charges USD = SUMX(CareCohorts,
+    CareCohorts[Customers] * CareCohorts[ReportedMonths] * CareCohorts[MonthlyPriceUSD])
+
+// Date table: create with New table (rather than New measure).
+// Covers all reported snapshots and entered collection dates. No actual dates
+// are inferred for missing project records.
+Date =
+VAR DatesInModel =
+    UNION(SELECTCOLUMNS(Reported, "D", Reported[SnapshotDate]),
+          SELECTCOLUMNS(Projects, "D", Projects[CollectionDate]))
+VAR FirstDate = MINX(DatesInModel, [D])
+VAR LastDate = MAXX(DatesInModel, [D])
+RETURN ADDCOLUMNS(
+    CALENDAR(DATE(YEAR(FirstDate),1,1),DATE(YEAR(LastDate),12,31)),
+    "YearMonth", FORMAT([Date],"yyyy-MM"),
+    "YearMonthSort", YEAR([Date])*100+MONTH([Date]))
+
+// Do not create an exact conversion measure from the approximate outreach
+// count. Collect unique, matching prospect populations and outcome records first.
