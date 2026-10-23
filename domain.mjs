@@ -44,9 +44,15 @@ export function monthlyTotals(projects) {
   return result;
 }
 export function filterProjects(projects,source,year){return projects.filter(p=>(source==='All'||p.source===source)&&(year==='All'||p.date.startsWith(year)));}
+export function hydratePublishedLedger(saved,published){
+  // Only seed an old, empty ledger. Never replace user-entered rows or revive
+  // records that the user deliberately removed after receiving this version.
+  if((saved.ledgerVersion||0)>=(published.ledgerVersion||0)||saved.projects.length)return {data:saved,migrated:false};
+  return {data:{...saved,projects:structuredClone(published.projects),ledgerVersion:published.ledgerVersion},migrated:true};
+}
 export function csvText(projects){
   const quote=v=>'"'+String(v).replaceAll('"','""')+'"';
   // Prevent spreadsheet formula execution for user-entered text labels.
   const safe=v=>/^[=+@\-\t\r]/.test(String(v))?"'"+v:v;
-  return 'ProjectID,AnonymousLabel,CollectedUSD,CollectionDate,LeadSource\r\n'+projects.map(p=>[safe(p.id),safe(p.label),p.amount.toFixed(2),p.date,p.source].map(quote).join(',')).join('\r\n');
+  return 'ProjectID,AnonymousLabel,RecordedValueUSD,RecordDate,LeadSource,RecordBasis,DateBasis\r\n'+projects.map(p=>[safe(p.id),safe(p.label),p.amount.toFixed(2),p.date,p.source,p.provenance||'Entered by owner',p.dateBasis||'Final collection date entered by owner'].map(quote).join(',')).join('\r\n');
 }

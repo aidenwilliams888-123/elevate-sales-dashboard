@@ -19,7 +19,7 @@ The reconstruction includes 1,200 prospects, 360 reached, 110 interested, 45 quo
 
 Filters select lead creation cohorts, with outcomes observed through October 22, 2026. Won-value charts group close dates for selected cohorts and are not cash-collection charts. Milestone counts are nested; current stage counts are mutually exclusive. Non-progression does not necessarily mean rejection.
 
-For compatibility, source filenames retain their original `demo-` names. `demo-domain.mjs` generates reconstructed rows, `demo-opportunities.csv` contains them, and `tests-demo.mjs` verifies calculations. Their `dataStatus` is `RECONSTRUCTED_OWNER_CONFIRMED`. These rows should remain separate from the original-record project ledger.
+For compatibility, source filenames retain their original `demo-` names. `demo-domain.mjs` generates reconstructed rows, `demo-opportunities.csv` contains them, and `tests-demo.mjs` verifies calculations. Their `dataStatus` is `RECONSTRUCTED_OWNER_CONFIRMED`. These rows now populate the business project ledger with explicit reconstruction and date-proxy notes. They are not imported original records.
 
 Run `node tests-demo.mjs` for analytics checks.
 
@@ -48,19 +48,21 @@ The owner recalled no clients in the first two months, reaching two clients in a
 3. **Care revenue** separates subscription run rates from scheduled historical charges and actual cash receipts.
 4. **Data & definitions** explains provenance, supports local snapshot edits, and imports JSON backups.
 
-Project entries and changes save in **this browser’s local storage** only. They do not update GitHub, other devices, or interviewer copies. Clearing browser data can erase them. **Export backup** downloads a complete JSON file for restoring/importing on another device. **Export CSV** downloads the currently filtered project records for Excel, SQL or Power BI. CSV import is not implemented; use the form or a validated JSON backup.
+The published ledger begins with the 17 reconstructed wins. An older saved ledger is seeded automatically only if it is empty and has not already received ledger version 2. Existing local records are preserved. Reset this browser restores the current published 17-record snapshot.
+
+Project edits and additional entries save in **this browser’s local storage** only. They do not update GitHub, other devices, or interviewer copies. Clearing browser data can erase them. **Export backup** downloads a complete JSON file for restoring/importing on another device. **Export CSV** downloads the currently filtered project records for Excel, SQL or Power BI. CSV import is not implemented; use the form or a validated JSON backup.
 
 ### Trends and average value
 
-Only entered records feed ledger totals, average project value and monthly charts. Overview business totals never silently combine with incomplete detailed records. Record coverage compares all entered rows with the reported 17 projects. It does not prove the records are correct or reconciled.
+Only ledger records feed ledger totals, average project value and monthly charts. Reconstructed records and any additional owner entries retain their provenance. Overview business totals never silently combine with incomplete detailed records. Record coverage compares all entered rows with the reported 17 projects. It does not prove the records are correct or reconciled.
 
-One record carries a fully paid website total on its final collection date. This convention is useful for reconstructing paid-project history. **If a project was paid in installments across months, its full total on the final payment date is not exact monthly cash flow.** Extend the model with a payment ledger before claiming cash flow by payment month. The chart groups these entered project collections, not completed dates or recognized accounting revenue. Missing months mean no entered rows, not proven zero revenue.
+Reconstructed rows carry won-project value on the win date as a collection-date proxy, with source notes on every row and in the CSV. Owner-entered records can carry a fully paid website total on its final collection date. This convention is useful for reconstructing paid-project history. **If a project was paid in installments across months, its full total on the final payment date is not exact monthly cash flow.** Extend the model with a payment ledger before claiming cash flow by payment month. The chart groups recorded project values by their recorded date. It is not a verified cash-flow or accounting-revenue chart. Missing months mean no entered rows, not proven zero revenue.
 
 Exact conversion is intentionally unavailable. Seventeen clients divided by a rough cold-call volume mixes channels and uncertain denominators. Reconstruct a unique all-channel prospect population and outcomes over the same period before calculating won opportunities / all opportunities.
 
 ## Publish updated records
 
-The approved public baseline contains **no client-level records**. The deployed dashboard fetches `data/business.json`. To publish changes:
+The approved public baseline contains 17 anonymous reconstructed won-project records, totaling $26,750 in recorded project value. No original client identities or receipts were supplied. The deployed dashboard fetches `data/business.json`. To publish changes:
 
 1. Export a JSON backup from your local dashboard.
 2. Review it carefully. Retain only records you want public and use anonymous labels. The project source and amount become public if committed. Do not include bank details, customer contact information, receipts or invoices.
@@ -73,7 +75,7 @@ Changing the JSON business name does not automatically replace the branded stati
 
 - `index.html`, `styles.css`, `app.js`: responsive, buildless dashboard.
 - `domain.mjs`: validated records, care calculations, filtering, monthly aggregation and CSV export.
-- `data/business.json`: approved aggregate snapshot with an empty project ledger.
+- `data/business.json`: approved snapshot with 17 reconstructed project records.
 - `data/projects_template.csv`: headers for the exact exported record format.
 - `powerbi/`: empty detailed-data schema, reported totals, care cohorts, DAX and setup guidance for a future native report.
 - `reconcile.sql`: SQL checks for reconstructed project records.
@@ -85,7 +87,7 @@ For developers: `node tests.mjs` runs the calculation/validation checks. Native 
 
 ## Interview demonstration
 
-Present this as a **new browser dashboard using owner-reported totals and calculated subscription metrics**. Show how empty states protect against false precision. Enter a real anonymous project, demonstrate filtering and average value, then explain how you would reconcile it to records. Avoid showing a temporary test record as real data.
+Present this as a **new browser dashboard using owner-reported totals and calculated subscription metrics**. Show how empty states protect against false precision. Demonstrate the 17 reconstructed rows, filtering and average value, then explain how you would reconcile project values and proxy dates to payment records. Avoid showing a temporary test record as real data.
 
 This implementation does not establish that a Power BI project was previously completed or used to generate revenue. The exact resume bullets were not provided. The Power BI files here are a model guide and measures, not evidence of native report authoring. Only claim hands-on use of tools and work you have actually performed.
 

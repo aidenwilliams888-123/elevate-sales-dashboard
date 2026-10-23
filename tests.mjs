@@ -1,13 +1,20 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {validate,careMetrics,projectMetrics,monthlyTotals,filterProjects,csvText,validDate} from './domain.mjs';
+import {validate,careMetrics,projectMetrics,monthlyTotals,filterProjects,csvText,validDate,hydratePublishedLedger} from './domain.mjs';
 const baseline=JSON.parse(fs.readFileSync(new URL('./data/business.json',import.meta.url),'utf8'));
 validate(baseline);
-assert.equal(baseline.projects.length,0,'No fabricated projects in published data');
+assert.equal(baseline.projects.length,17,'Published ledger includes the 17 reconstructed wins');
+assert.equal(projectMetrics(baseline.projects).total,26750);
+assert(baseline.projects.every(p=>p.provenance.includes('Reconstructed')&&p.dateBasis.includes('proxy')));
+const oldEmpty={...structuredClone(baseline),projects:[]};delete oldEmpty.ledgerVersion;
+const migrated=hydratePublishedLedger(oldEmpty,baseline);
+assert.equal(migrated.migrated,true);assert.equal(migrated.data.projects.length,17);assert.equal(oldEmpty.projects.length,0);
+const cleared={...structuredClone(baseline),projects:[]};assert.equal(hydratePublishedLedger(cleared,baseline).migrated,false,'Do not revive intentionally removed records');
 assert.deepEqual(careMetrics(baseline.reported),{customers:5,mrr:250,annualRunRate:3000,scheduled:1050});
 assert.deepEqual(projectMetrics([]),{count:0,total:0,average:null});
 // Disposable test fixtures only. They are never shipped in the business JSON.
 const fixture=[{id:'TEST-1',label:'Test only',amount:1200.1,date:'2026-01-31',source:'Cold call'},{id:'TEST-2',label:'Test only',amount:1999.9,date:'2026-03-01',source:'Referral'}];
+const withLocal={...oldEmpty,projects:fixture};assert.deepEqual(hydratePublishedLedger(withLocal,baseline).data.projects,fixture,'Preserve existing local entries');
 assert.deepEqual(projectMetrics(fixture),{count:2,total:3200,average:1600});
 assert.deepEqual(monthlyTotals(fixture),[{month:'2026-01',total:1200.1},{month:'2026-02',total:0},{month:'2026-03',total:1999.9}]);
 assert.equal(filterProjects(fixture,'Referral','2026').length,1);
