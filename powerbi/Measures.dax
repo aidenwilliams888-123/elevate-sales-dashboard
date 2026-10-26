@@ -2,9 +2,9 @@
 // Use the CSV headers exactly. Do not paste the entire file as one expression.
 Entered Projects = COUNTROWS(Projects)
 
-Entered Website Collections USD = SUM(Projects[CollectedUSD])
+Entered Website Value USD = SUM(Projects[RecordedValueUSD])
 
-Average Entered Project USD = DIVIDE([Entered Website Collections USD], [Entered Projects])
+Average Entered Project USD = DIVIDE([Entered Website Value USD], [Entered Projects])
 
 Reported Completed Projects = MAX(Reported[CompletedProjects])
 
@@ -25,7 +25,7 @@ Care Scheduled Charges USD = SUMX(CareCohorts,
 Date =
 VAR DatesInModel =
     UNION(SELECTCOLUMNS(Reported, "D", Reported[SnapshotDate]),
-          SELECTCOLUMNS(Projects, "D", Projects[CollectionDate]))
+          SELECTCOLUMNS(Projects, "D", Projects[RecordDate]))
 VAR FirstDate = MINX(DatesInModel, [D])
 VAR LastDate = MAXX(DatesInModel, [D])
 RETURN ADDCOLUMNS(
