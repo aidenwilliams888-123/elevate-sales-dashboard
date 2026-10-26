@@ -10,7 +10,192 @@
     "coldCalledCompaniesLowerBound": 1000,
     "coldCallShareEstimate": 0.8,
     "careMonthlyPrice": 50,
-    "careCohorts": [{"customers":2,"reportedMonths":5},{"customers":2,"reportedMonths":4},{"customers":1,"reportedMonths":3}]
+    "careCohorts": [
+      {
+        "customers": 2,
+        "reportedMonths": 5
+      },
+      {
+        "customers": 2,
+        "reportedMonths": 4
+      },
+      {
+        "customers": 1,
+        "reportedMonths": 3
+      }
+    ]
   },
-  "projects": []
+  "projects": [
+    {
+      "id": "REC-1",
+      "label": "Reconstructed website 01",
+      "amount": 1200,
+      "date": "2026-03-05",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-2",
+      "label": "Reconstructed website 02",
+      "amount": 1250,
+      "date": "2026-04-08",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-3",
+      "label": "Reconstructed website 03",
+      "amount": 1300,
+      "date": "2026-04-11",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-4",
+      "label": "Reconstructed website 04",
+      "amount": 1350,
+      "date": "2026-05-14",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-5",
+      "label": "Reconstructed website 05",
+      "amount": 1400,
+      "date": "2026-05-17",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-6",
+      "label": "Reconstructed website 06",
+      "amount": 1450,
+      "date": "2026-05-20",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-7",
+      "label": "Reconstructed website 07",
+      "amount": 1500,
+      "date": "2026-06-05",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-8",
+      "label": "Reconstructed website 08",
+      "amount": 1500,
+      "date": "2026-06-08",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-9",
+      "label": "Reconstructed website 09",
+      "amount": 1550,
+      "date": "2026-06-11",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-10",
+      "label": "Reconstructed website 10",
+      "amount": 1600,
+      "date": "2026-07-14",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-11",
+      "label": "Reconstructed website 11",
+      "amount": 1650,
+      "date": "2026-07-17",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-12",
+      "label": "Reconstructed website 12",
+      "amount": 1700,
+      "date": "2026-07-20",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-13",
+      "label": "Reconstructed website 13",
+      "amount": 1750,
+      "date": "2026-08-05",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-14",
+      "label": "Reconstructed website 14",
+      "amount": 1800,
+      "date": "2026-08-08",
+      "source": "Cold call",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-1151",
+      "label": "Reconstructed website 15",
+      "amount": 1850,
+      "date": "2026-09-11",
+      "source": "Referral",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-1152",
+      "label": "Reconstructed website 16",
+      "amount": 1900,
+      "date": "2026-09-14",
+      "source": "Referral",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    },
+    {
+      "id": "REC-1153",
+      "label": "Reconstructed website 17",
+      "amount": 2000,
+      "date": "2026-10-17",
+      "source": "Referral",
+      "provenance": "Reconstructed; figures confirmed by owner",
+      "dateBasis": "Win date used as collection-date proxy",
+      "amountBasis": "Won project value; receipts not independently reconciled"
+    }
+  ],
+  "ledgerVersion": 2
 }
